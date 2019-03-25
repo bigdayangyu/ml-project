@@ -1,15 +1,38 @@
 # Machine Learning Project
 #### Methods
-1. Logistic Regression 
-2. Perceptron
-3. Naive Bayes classifier
+##### Logistic Regression 
+The logistic regression model is used to model binary classification data. Logistic regression is a special case of generalized linear regression where the labels Y are modeled as a linear combination of the data X, but in a transformed space specified by g, a Logistic function. 
+
+##### Perceptron
+The perceptron is a mistakedriven online learning algorithm. It takes as input a vector of real-valued inputs x and makes a prediction y = { 1, +1}. Predictions are made using a linear classifier: y = sign(w · x). Updates to w are made only when a prediction is incorrect: y != y_predict. The new weight vector w0 is a function of the current weight vector w and example x, y. The weight vector is updated so as to improve the prediction on the current example. 
+
+##### Support Vector Machine SVM
+A Support Vector Machine constructs a hyperplane in high dimensional space, which separates training points of defferent classes while keeping a large margin with regards to the training points closest to the hyperplane.
+       
+Naive Bayes classifier
 - Single task Naive Bayes
 - Multi-Task Naive Bayes
 - Semi-Supervised Naive Bayes
 #### How to run the code 
 ```
+python3 classify.py --mode train --algorithm ALGORITHM --model-file DATASET.ALGORITHM.model
+                    --data DATASET.train --online-learning-rate X --online-training-iterations X
+```
+For example 
+```
 python3 classify.py --mode train --algorithm perceptron --model-file speech.perceptron.model
                     --data speech.train --online-learning-rate 1 --online-training-iterations 5
+```
+
+To test the model 
+``` 
+python3 classify.py --mode test --model-file DATASET.ALGORITHM.model --data DATASET.dev
+        --predictions-file DATASET.dev.ALGORITHM
+```
+For example
+```
+python3 classify.py --mode test --model-file speech.perceptron.model --data speech.dev
+        --predictions-file speech.dev.perceptron
 ```
 #### Component 
 • **data.py** 
@@ -19,21 +42,15 @@ which has num examples rows and num features columns. The labels are stored as a
 
 • **classify.py**
 This file is the main testbed to be run from the command line. It takes care of parsing command line arguments,
-entering train/test mode, saving models/predictions, etc. Once again, do not change the names of existing command-line arguments.
+entering train/test mode, saving models/predictions, etc. 
 
 • **models.py**
-This file contains a Model class which you should extend. Models have (in the very least) a fit method, 
+This file contains a Model class. Models have (in the very least) a fit method, 
 for fitting the model to data, and a predict method, which computes predictions from features. 
-You are free to add other methods as necessary. Note that all predictions from your model must be 0 or 1;
-if you use other intermediate values for internal computations, then they must be converted before they are returned.
 
 • **compute_accuracy.py**
 This file is a script which simply compares the true labels from a data file (e.g., bio.dev) 
 to the predictions that were saved by running classify.py (e.g., bio.dev.perceptron.predictions).
 
 • **run_on_all_datasets.py** 
-This file is not necessarily needed, but is included simply to make it easier for you to test your algorithms on all datasets, 
-and to make sure that your algorithms even run on the test sets. Inside this script you can specify the main data directory, 
-which should contain all of the *.train, *.dev, *.test files, along with an output directory (for models and predictions). 
-The script loops through the datasets to train and test on each. Feel free to modify this script as needed; by default, 
-it assumes the data directory is ./datasets and that the desired output directory is ./output.
+The script loops through the datasets to train and test on each file in main data directory, which should contain all of the *.train, *.dev, *.test files, along with an output directory (for models and predictions). 
