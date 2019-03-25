@@ -1,5 +1,12 @@
 # Machine Learning Project
-#### Methods
+#### Deep Learning Methods
+##### Two-Layer Neural Network
+Using the Sequential module to map each input vector of length 26X26 to hidden layers, and essentially to a vector of length 5, which contains class scores or logits. Later, passes the socores directly to a PyTorch’s cross-entropy loss function to build a simple Two-Layer Neural Network to classify images from the QuickDraw dataset as either apple (0), baseball (1), cookie (2), clock (3), or fan (4).
+
+##### Convolutional Neural Network
+The key property of a Convolutional Neural Network (CNN) is that hidden units are formed using local spatial regions of the input image, with weights that are shared over spatial regions. Those weights represent the importance to various aspects in the image and are able to differentiate one from the other. CNNs use multilayer perceptrons, as individual neurons respond to stimuli only in a particular region of the image field, and A collection of such fields overlap to cover the entire image.
+
+#### Machine Learning Methods
 ##### Logistic Regression 
 The logistic regression model is used to model binary classification data. Logistic regression is a special case of generalized linear regression where the labels Y are modeled as a linear combination of the data X, but in a transformed space specified by g, a Logistic function. 
 
@@ -9,7 +16,7 @@ The perceptron is a mistakedriven online learning algorithm. It takes as input a
 ##### Support Vector Machine SVM
 A Support Vector Machine constructs a hyperplane in high dimensional space, which separates training points of defferent classes while keeping a large margin with regards to the training points closest to the hyperplane.
        
-Naive Bayes classifier
+##### Naive Bayes classifier
 - Single task Naive Bayes
 - Multi-Task Naive Bayes
 - Semi-Supervised Naive Bayes
